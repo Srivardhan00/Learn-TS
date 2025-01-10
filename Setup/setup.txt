@@ -1,0 +1,20 @@
+https://www.typescriptlang.org/docs/handbook/intro.html
+
+>tsc -init
+- creates tsconfig.json file
+
+> tsc
+- then <filename>.js is created
+- default uses var keyword, function assignments, etc
+- change "target" key's value in tsconfig file to required ex: "ES6"
+- default combines every ts file to its own js file
+- To only compile few files on this command, add a new key under "compilerOptions", with "files":[], add file names in array
+- to include exclude use keys "include" with array of required paths, or "exclude" with required paths
+- to set path for compiled js files, we use "outDir" in "compilerOptions" and mention folder name for them
+
+- Declaration files end with .d.ts
+
+USING PACKAGES
+- some packages come with types on install , ex: axios
+// for others , ex:express
+- install types by `npm i @types/<package-name>`
