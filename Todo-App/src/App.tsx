@@ -7,12 +7,17 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoItem from "./components/TodoItem";
+import { saveTodos, getTodos } from "../utils/saveToLocal.ts";
 
 const App = () => {
-  const [todos, setTodos] = useState<TodoItemType[]>([]);
+  const [todos, setTodos] = useState<TodoItemType[]>(getTodos());
   const [title, setTitle] = useState<TodoItemType["title"]>("");
+
+  useEffect(() => {
+    saveTodos(todos);
+  }, [todos]);
 
   const submitHandler = (): void => {
     const newTodo: TodoItemType = {
@@ -48,7 +53,7 @@ const App = () => {
 
   return (
     <div>
-      <Container maxWidth="sm" sx={{ height: "95vh" }}>
+      <Container maxWidth="sm">
         <AppBar position="static">
           <Toolbar>
             <Typography>To-Do</Typography>
